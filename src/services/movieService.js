@@ -1,4 +1,4 @@
-import { isValidDate, isValidRap, validateGenreSelection } from '../utils/validation.jsh';
+import { isValidDate, isValidRap, validateGenreSelection } from '../utils/validation.js';
 
 function xemLichChieuPhim(ngayXem, rapChieu, theLoai) {
     // Kiểm tra xem ngayXem có hợp lệ
@@ -17,7 +17,7 @@ function xemLichChieuPhim(ngayXem, rapChieu, theLoai) {
     }
 
     // Kiểm tra rapChieu hợp lệ
-    if (!rapChieu || !isValidRap(rapChieu)) {
+    if (!rapChieu || !isValidRap(rapChieu, ngayXem)) {
         throw new Error('Rạp chiếu không hợp lệ.');
     }
 
@@ -67,4 +67,4 @@ function getDanhSachPhim(ngayXem, rapChieu, theLoai) {
     });
 }
 
-module.exports = { xemLichChieuPhim };
+export { xemLichChieuPhim };

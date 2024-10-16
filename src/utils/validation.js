@@ -1,15 +1,13 @@
 function isValidDate(date) {
     // Kiểm tra xem ngày có hợp lệ không
     if (!date) {
-        return false; // Ngày không được để trống
+        return false;
     }
-
     // Kiểm tra định dạng ngày tháng (ví dụ: YYYY-MM-DD)
     const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
     if (!dateRegex.test(date)) {
         return false; // Định dạng ngày không hợp lệ
     }
-
     // Kiểm tra ngày tháng có hợp lệ không
     const [year, month, day] = date.split('-').map(Number);
     const inputDate = new Date(year, month - 1, day);
@@ -20,71 +18,16 @@ function isValidDate(date) {
     ) {
         return false; // Ngày tháng không hợp lệ
     }
-
     // Kiểm tra ngày xem có phải là quá khứ không
     const today = new Date();
     if (inputDate < today) {
         return false; // Ngày xem không được là ngày quá khứ
     }
-
     return true; // Ngày hợp lệ
 }
 
 function isValidRap(rapChieu, ngayChieu, danhSachRapHoatDong) {
 
-    // Danh sách rạp hoạt động
-    const danhSachRapHoatDong = [
-        {
-            ten: 'CGV Vincom',
-            hoatDong: true,
-            suatChieu: ['2024-10-16', '2024-10-17', '2024-10-18']
-        },
-        {
-            ten: 'BHD Star Cineplex',
-            hoatDong: true,
-            suatChieu: ['2024-10-16', '2024-10-18', '2024-10-19']
-        },
-        {
-            ten: 'Lotte Cinema',
-            hoatDong: false,
-            suatChieu: [] // Rạp không hoạt động
-        },
-        {
-            ten: 'Galaxy Nguyễn Du',
-            hoatDong: true,
-            suatChieu: ['2024-10-17', '2024-10-18']
-        },
-        {
-            ten: 'Cinestar Quốc Thanh',
-            hoatDong: true,
-            suatChieu: ['2024-10-16', '2024-10-17', '2024-10-19']
-        },
-        {
-            ten: 'Mega GS Cao Thắng',
-            hoatDong: true,
-            suatChieu: ['2024-10-17', '2024-10-18', '2024-10-19']
-        },
-        {
-            ten: 'CGV Parkson Hùng Vương',
-            hoatDong: true,
-            suatChieu: ['2024-10-16', '2024-10-17']
-        },
-        {
-            ten: 'BHD Bitexco',
-            hoatDong: false,
-            suatChieu: [] // Rạp không hoạt động
-        },
-        {
-            ten: 'Lotte Cinema Nam Sài Gòn',
-            hoatDong: true,
-            suatChieu: ['2024-10-16', '2024-10-19']
-        },
-        {
-            ten: 'Galaxy Kinh Dương Vương',
-            hoatDong: true,
-            suatChieu: ['2024-10-18', '2024-10-19']
-        }
-    ];
     // Kiểm tra xem rạp chiếu có hợp lệ không
     if (!rapChieu) {
         return false; // Rạp chiếu không được để trống
